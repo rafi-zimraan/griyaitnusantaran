@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IYiS — Detail Portfolio | GriyaIT Nusantara</title>
+    <meta
+      name="description"
+      content="IYiS (Ismuhu Yahya Islamic School) adalah aplikasi manajemen sekolah Islam berbasis Flutter yang dikembangkan oleh GriyaIT Nusantara."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/icons/logoGriyaItNusantara.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --primary-dark: #4338ca;
+        --primary-light: #818cf8;
+        --primary-bg: #eef2ff;
+        --secondary: #0ea5e9;
+        --accent: #f59e0b;
+        --dark: #0f172a;
+        --dark-2: #1e293b;
+        --gray-700: #374151;
+        --gray-600: #4b5563;
+        --gray-500: #6b7280;
+        --gray-400: #9ca3af;
+        --gray-300: #d1d5db;
+        --gray-200: #e5e7eb;
+        --gray-100: #f3f4f6;
+        --gray-50: #f9fafb;
+        --white: #ffffff;
+        --gradient: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        --radius: 12px;
+        --radius-lg: 20px;
+        --transition: all 0.3s ease;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Plus Jakarta Sans",
+          -apple-system,
+          sans-serif;
+        color: var(--gray-700);
+        line-height: 1.7;
+        background: var(--white);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition);
+      }
+      ul {
+        list-style: none;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ===== NAVBAR ===== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 14px 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .navbar .container {
+        max-width: 900px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        font-size: 1.2rem;
+      }
+
+      .logo-img {
+        height: 32px;
+        width: auto;
+      }
+      .logo-text {
+        color: var(--dark);
+      }
+      .highlight {
+        color: var(--primary);
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        border: 1.5px solid var(--gray-300);
+        border-radius: 10px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--gray-600);
+      }
+
+      .back-btn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: var(--primary-bg);
+      }
+
+      /* ===== HERO ===== */
+      .detail-hero {
+        padding: 100px 0 48px;
+        background: linear-gradient(
+          180deg,
+          var(--primary-bg) 0%,
+          var(--white) 100%
+        );
+      }
+
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        color: var(--gray-500);
+        margin-bottom: 20px;
+      }
+
+      .breadcrumb a:hover {
+        color: var(--primary);
+      }
+      .breadcrumb i {
+        font-size: 0.7rem;
+      }
+
+      .detail-hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 800;
+        color: var(--dark);
+        line-height: 1.3;
+        margin-bottom: 16px;
+      }
+
+      .detail-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .badge-category {
+        background: var(--primary-bg);
+        color: var(--primary);
+      }
+      .badge-tech {
+        background: var(--gray-100);
+        color: var(--gray-600);
+      }
+      .badge-platform {
+        background: #dcfce7;
+        color: #16a34a;
+      }
+
+      /* ===== SCREENSHOT ===== */
+      .screenshot-section {
+        margin-bottom: 48px;
+      }
+
+      .screenshot-wrapper {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid var(--gray-200);
+        background: var(--gray-50);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 300px;
+        padding: 40px;
+      }
+
+      .screenshot-wrapper img {
+        max-width: 360px;
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* ===== CONTENT ===== */
+      .detail-content {
+        padding-bottom: 80px;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 260px;
+        gap: 40px;
+        align-items: start;
+      }
+
+      .main-content section {
+        margin-bottom: 40px;
+      }
+
+      .main-content h2 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--gray-100);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .main-content h2 i {
+        color: var(--primary);
+        font-size: 1rem;
+      }
+
+      .main-content p {
+        color: var(--gray-600);
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+      }
+
+      /* Feature grid */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+        background: var(--gray-50);
+        border-radius: var(--radius);
+        border: 1px solid var(--gray-200);
+      }
+
+      .feature-icon {
+        width: 36px;
+        height: 36px;
+        background: var(--primary-bg);
+        color: var(--primary);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+
+      .feature-item h4 {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 2px;
+      }
+
+      .feature-item p {
+        font-size: 0.8rem;
+        color: var(--gray-500);
+        margin: 0;
+      }
+
+      /* Challenge list */
+      .challenge-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .challenge-item {
+        padding: 20px;
+        background: var(--gray-50);
+        border-radius: var(--radius);
+        border: 1px solid var(--gray-200);
+        border-left: 3px solid var(--accent);
+      }
+
+      .challenge-item h4 {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 6px;
+      }
+
+      .challenge-item p {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+        margin: 0;
+      }
+
+      .solution {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--gray-200);
+        font-size: 0.875rem;
+        color: #16a34a;
+        font-weight: 600;
+      }
+
+      .solution i {
+        margin-top: 3px;
+        flex-shrink: 0;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        position: sticky;
+        top: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sidebar-card {
+        padding: 24px;
+        background: var(--gray-50);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--gray-200);
+      }
+
+      .sidebar-card h4 {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--gray-500);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 14px;
+      }
+
+      .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--gray-200);
+        font-size: 0.875rem;
+        gap: 8px;
+      }
+
+      .info-row:last-child {
+        border-bottom: none;
+      }
+      .info-row .label {
+        color: var(--gray-500);
+        flex-shrink: 0;
+      }
+      .info-row .value {
+        color: var(--dark);
+        font-weight: 600;
+        text-align: right;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tech-tag {
+        padding: 5px 12px;
+        background: var(--primary-bg);
+        color: var(--primary);
+        border-radius: 50px;
+        font-size: 0.78rem;
+        font-weight: 600;
+      }
+
+      .link-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .link-list a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--gray-700);
+      }
+
+      .link-list a:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: var(--primary-bg);
+      }
+
+      .link-list a i {
+        color: var(--primary);
+        width: 16px;
+        text-align: center;
+      }
+
+      .cta-card {
+        background: var(--gradient);
+        border: none;
+        text-align: center;
+      }
+
+      .cta-card h4 {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .cta-card p {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.75);
+        margin-bottom: 16px;
+      }
+
+      .btn-white-sm {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: var(--white);
+        color: var(--primary);
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .btn-white-sm:hover {
+        background: var(--primary-bg);
+      }
+
+      /* ===== FOOTER ===== */
+      .detail-footer {
+        padding: 24px 0;
+        background: var(--dark);
+        text-align: center;
+        color: var(--gray-500);
+        font-size: 0.85rem;
+      }
+
+      .detail-footer a {
+        color: var(--primary-light);
+      }
+      .detail-footer a:hover {
+        color: var(--white);
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: static;
+          order: -1;
+        }
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+        .detail-meta {
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="../index.html" class="logo">
+          <img
+            src="../assets/icons/logoGriyaItNusantara.png"
+            alt="GriyaIT Nusantara"
+            class="logo-img"
+          />
+          <span class="logo-text"
+            >GriyaIT<span class="highlight">Nusantara</span></span
+          >
+        </a>
+        <a href="../index.html#portfolio" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Kembali ke Portfolio
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="detail-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html">Beranda</a>
+          <i class="fas fa-chevron-right"></i>
+          <a href="../index.html#portfolio">Portfolio</a>
+          <i class="fas fa-chevron-right"></i>
+          <span>IYiS</span>
+        </div>
+        <h1>IYiS<br />Ismuhu Yahya Islamic School</h1>
+        <div class="detail-meta">
+          <span class="badge badge-category"
+            ><i class="fas fa-school"></i> Sekolah Islam</span
+          >
+          <span class="badge badge-platform"
+            ><i class="fab fa-android"></i> Android</span
+          >
+          <span class="badge badge-tech"
+            ><i class="fab fa-flutter" style="color: #54c5f8"></i> Flutter</span
+          >
+          <span class="badge badge-tech"
+            ><i class="fas fa-code-branch"></i> Clean Architecture</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshot / Logo -->
+    <div class="container">
+      <div class="screenshot-section">
+        <div class="screenshot-wrapper">
+          <img
+            src="../assets/images/portofolio/LOGOBGIYIS.png"
+            alt="IYiS — Islamic Yayasan Integrated System"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+      <div class="detail-content">
+        <div class="content-grid">
+          <!-- Main -->
+          <div class="main-content">
+            <section>
+              <h2><i class="fas fa-info-circle"></i> Tentang Proyek</h2>
+              <p>
+                <strong>IYiS (Ismuhu Yahya Islamic School)</strong> adalah
+                aplikasi manajemen sekolah Islam berbasis mobile yang dikembangkan
+                menggunakan <strong>Flutter</strong>. Aplikasi ini dirancang
+                untuk mempermudah pengelolaan kegiatan akademik dan administrasi
+                sekolah — mulai dari data siswa, jadwal pelajaran, absensi, hingga
+                komunikasi dengan orang tua secara digital.
+              </p>
+              <p>
+                Dibangun dengan arsitektur <strong>Clean Architecture</strong>,
+                sistem ini memisahkan logika bisnis dan data secara tegas
+                sehingga mudah dikembangkan seiring bertambahnya kebutuhan sekolah.
+              </p>
+            </section>
+
+            <section>
+              <h2><i class="fas fa-star"></i> Fitur Utama</h2>
+              <div class="feature-grid">
+                <div class="feature-item">
+                  <div class="feature-icon"><i class="fas fa-sitemap"></i></div>
+                  <div>
+                    <h4>Manajemen Multi-Unit</h4>
+                    <p>
+                      Kelola sekolah, pesantren, dan masjid dalam satu dashboard
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-user-tie"></i>
+                  </div>
+                  <div>
+                    <h4>Data SDM Terpusat</h4>
+                    <p>
+                      Pengelolaan guru, karyawan, dan santri dalam satu sistem
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                  </div>
+                  <div>
+                    <h4>Keuangan Yayasan</h4>
+                    <p>Laporan pemasukan, pengeluaran, dan anggaran per unit</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                  </div>
+                  <div>
+                    <h4>Absensi Digital</h4>
+                    <p>
+                      Rekap kehadiran guru dan karyawan seluruh unit secara
+                      real-time
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-chart-pie"></i>
+                  </div>
+                  <div>
+                    <h4>Dashboard Eksekutif</h4>
+                    <p>
+                      Ringkasan data seluruh unit dalam grafik yang mudah dibaca
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                  <div>
+                    <h4>Akses Berbasis Role</h4>
+                    <p>
+                      Hak akses terpisah untuk ketua yayasan, kepala unit, dan
+                      staf
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2><i class="fas fa-lightbulb"></i> Tantangan & Solusi</h2>
+              <div class="challenge-list">
+                <div class="challenge-item">
+                  <h4>Integrasi data lintas unit yang heterogen</h4>
+                  <p>
+                    Setiap unit (sekolah, pesantren, masjid) memiliki struktur
+                    data yang berbeda-beda, menyulitkan penyatuan dalam satu
+                    sistem yang konsisten.
+                  </p>
+                  <p class="solution">
+                    <i class="fas fa-check-circle"></i> Desain schema database
+                    yang fleksibel dengan pendekatan polymorphic relations,
+                    memungkinkan tiap unit memiliki atribut uniknya tanpa
+                    mengorbankan konsistensi data utama.
+                  </p>
+                </div>
+                <div class="challenge-item">
+                  <h4>Performa dashboard dengan banyak data agregasi</h4>
+                  <p>
+                    Dashboard eksekutif perlu menampilkan ringkasan dari seluruh
+                    unit secara real-time, yang berpotensi memperlambat aplikasi
+                    jika tidak dioptimalkan.
+                  </p>
+                  <p class="solution">
+                    <i class="fas fa-check-circle"></i> Implementasi background
+                    data fetching dengan BLoC pattern dan caching lokal
+                    menggunakan Hive, sehingga dashboard tetap responsif
+                    meskipun data diambil dari banyak endpoint.
+                  </p>
+                </div>
+                <div class="challenge-item">
+                  <h4>Manajemen hak akses yang kompleks</h4>
+                  <p>
+                    Ketua yayasan, kepala unit, dan staf memerlukan tampilan dan
+                    akses fitur yang berbeda — dengan lapisan pengecualian per
+                    departemen.
+                  </p>
+                  <p class="solution">
+                    <i class="fas fa-check-circle"></i> Role-based access
+                    control (RBAC) yang dikonfigurasi di server-side dan
+                    dicerminkan di UI Flutter, sehingga menu dan fitur hanya
+                    muncul sesuai hak akses pengguna yang sedang login.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="sidebar">
+            <div class="sidebar-card">
+              <h4>Info Proyek</h4>
+              <div class="info-row">
+                <span class="label">Nama</span>
+                <span class="value">IYiS</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Klien</span>
+                <span class="value">Yayasan Ismuhuyahya</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Kategori</span>
+                <span class="value">Mobile App</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Platform</span>
+                <span class="value">Android</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Framework</span>
+                <span class="value">Flutter</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Arsitektur</span>
+                <span class="value">Clean Architecture</span>
+              </div>
+            </div>
+
+            <div class="sidebar-card">
+              <h4>Tech Stack</h4>
+              <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Dart</span>
+                <span class="tech-tag">BLoC</span>
+                <span class="tech-tag">Hive</span>
+                <span class="tech-tag">REST API</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Android</span>
+              </div>
+            </div>
+
+            <div class="sidebar-card">
+              <h4>Proyek Lainnya</h4>
+              <div class="link-list">
+                <a href="abimandira.html">
+                  <i class="fas fa-mobile-alt"></i> Absensi KebabaBiMandira
+                </a>
+                <a href="simpondok.html">
+                  <i class="fas fa-mosque"></i> Simpondok
+                </a>
+                <a href="masjidIsmuhuyahya.html">
+                  <i class="fas fa-globe"></i> Masjid Ismuhuyahya
+                </a>
+              </div>
+            </div>
+
+            <div class="sidebar-card cta-card">
+              <h4>Tertarik proyek serupa?</h4>
+              <p>
+                Kami siap membantu membangun sistem manajemen untuk yayasan atau
+                institusi Anda.
+              </p>
+              <a href="../index.html#kontak" class="btn-white-sm">
+                <i class="fas fa-comments"></i> Konsultasi Gratis
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="detail-footer">
+      <p>
+        &copy; 2025 <a href="../index.html">GriyaIT Nusantara</a>. All rights
+        reserved.
+      </p>
+    </footer>
+  </body>
+</html>
