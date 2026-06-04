@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panthermania — Detail Portfolio | GriyaIT Nusantara</title>
+    <meta
+      name="description"
+      content="Panthermania adalah aplikasi penjualan produk & komunitas acara kopdar mobil panther mania, dikembangkan oleh GriyaIT Nusantara."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/icons/LOGOBGPANTHERMANIA.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --primary-dark: #4338ca;
+        --primary-light: #818cf8;
+        --primary-bg: #eef2ff;
+        --accent: #f59e0b;
+        --accent-run: #f97316;
+        --accent-run-bg: #fff7ed;
+        --dark: #0f172a;
+        --dark-2: #1e293b;
+        --gray-700: #374151;
+        --gray-600: #4b5563;
+        --gray-500: #6b7280;
+        --gray-400: #9ca3af;
+        --gray-300: #d1d5db;
+        --gray-200: #e5e7eb;
+        --gray-100: #f3f4f6;
+        --gray-50: #f9fafb;
+        --white: #ffffff;
+        --gradient: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
+        --gradient-run: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        --radius: 12px;
+        --radius-lg: 20px;
+        --transition: all 0.3s ease;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Plus Jakarta Sans",
+          -apple-system,
+          sans-serif;
+        color: var(--gray-700);
+        line-height: 1.7;
+        background: var(--white);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition);
+      }
+      ul {
+        list-style: none;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ===== NAVBAR ===== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 14px 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .navbar .container {
+        max-width: 900px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        font-size: 1.2rem;
+      }
+      .logo-img {
+        height: 32px;
+        width: auto;
+      }
+      .logo-text {
+        color: var(--dark);
+      }
+      .highlight {
+        color: var(--primary);
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        border: 1.5px solid var(--gray-300);
+        border-radius: 10px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--gray-600);
+      }
+
+      .back-btn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: var(--primary-bg);
+      }
+
+      /* ===== HERO ===== */
+      .detail-hero {
+        padding: 100px 0 48px;
+        background: linear-gradient(180deg, #fff7ed 0%, var(--white) 100%);
+      }
+
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        color: var(--gray-500);
+        margin-bottom: 20px;
+      }
+
+      .breadcrumb a:hover {
+        color: var(--primary);
+      }
+      .breadcrumb i {
+        font-size: 0.7rem;
+      }
+
+      .detail-hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 800;
+        color: var(--dark);
+        line-height: 1.3;
+        margin-bottom: 16px;
+      }
+
+      .detail-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .badge-category {
+        background: var(--accent-run-bg);
+        color: var(--accent-run);
+      }
+      .badge-tech {
+        background: var(--gray-100);
+        color: var(--gray-600);
+      }
+      .badge-platform {
+        background: #dcfce7;
+        color: #16a34a;
+      }
+
+      /* ===== HERO BANNER ===== */
+      .event-banner {
+        margin-bottom: 48px;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        background: var(--gradient-run);
+        box-shadow: var(--shadow-lg);
+        padding: 60px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .event-banner .run-icon {
+        font-size: 5rem;
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      .event-banner h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--white);
+        letter-spacing: -0.5px;
+      }
+
+      .event-banner p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 500;
+      }
+
+      /* Stats */
+      .stats-row {
+        display: flex;
+        gap: 16px;
+        margin-top: 8px;
+      }
+
+      .stat-box {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius);
+        padding: 12px 20px;
+        text-align: center;
+      }
+
+      .stat-box .stat-num {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--white);
+        display: block;
+      }
+
+      .stat-box .stat-label {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+      }
+
+      /* ===== CONTENT ===== */
+      .detail-content {
+        padding-bottom: 80px;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 260px;
+        gap: 40px;
+        align-items: start;
+      }
+
+      .main-content section {
+        margin-bottom: 40px;
+      }
+
+      .main-content h2 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--gray-100);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .main-content h2 i {
+        color: var(--accent-run);
+        font-size: 1rem;
+      }
+
+      .main-content p {
+        color: var(--gray-600);
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+      }
+
+      /* Feature grid */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+        background: var(--gray-50);
+        border-radius: var(--radius);
+        border: 1px solid var(--gray-200);
+      }
+
+      .feature-icon {
+        width: 36px;
+        height: 36px;
+        background: var(--accent-run-bg);
+        color: var(--accent-run);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+
+      .feature-item h4 {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 2px;
+      }
+
+      .feature-item p {
+        font-size: 0.8rem;
+        color: var(--gray-500);
+        margin: 0;
+      }
+
+      /* Challenge list */
+      .challenge-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .challenge-item {
+        padding: 20px;
+        background: var(--gray-50);
+        border-radius: var(--radius);
+        border: 1px solid var(--gray-200);
+        border-left: 3px solid var(--accent);
+      }
+
+      .challenge-item h4 {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 6px;
+      }
+
+      .challenge-item p {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+        margin: 0;
+      }
+
+      .solution {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--gray-200);
+        font-size: 0.875rem;
+        color: #16a34a;
+        font-weight: 600;
+      }
+
+      .solution i {
+        margin-top: 3px;
+        flex-shrink: 0;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        position: sticky;
+        top: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sidebar-card {
+        padding: 24px;
+        background: var(--gray-50);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--gray-200);
+      }
+
+      .sidebar-card h4 {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--gray-500);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 14px;
+      }
+
+      .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--gray-200);
+        font-size: 0.875rem;
+        gap: 8px;
+      }
+
+      .info-row:last-child {
+        border-bottom: none;
+      }
+      .info-row .label {
+        color: var(--gray-500);
+        flex-shrink: 0;
+      }
+      .info-row .value {
+        color: var(--dark);
+        font-weight: 600;
+        text-align: right;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tech-tag {
+        padding: 5px 12px;
+        background: var(--primary-bg);
+        color: var(--primary);
+        border-radius: 50px;
+        font-size: 0.78rem;
+        font-weight: 600;
+      }
+
+      .link-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .link-list a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--gray-700);
+      }
+
+      .link-list a:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: var(--primary-bg);
+      }
+
+      .link-list a i {
+        color: var(--primary);
+        width: 16px;
+        text-align: center;
+      }
+
+      .cta-card {
+        background: var(--gradient-run);
+        border: none;
+        text-align: center;
+      }
+
+      .cta-card h4 {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .cta-card p {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.75);
+        margin-bottom: 16px;
+      }
+
+      .btn-white-sm {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: var(--white);
+        color: var(--accent-run);
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .btn-white-sm:hover {
+        background: var(--accent-run-bg);
+      }
+
+      /* ===== FOOTER ===== */
+      .detail-footer {
+        padding: 24px 0;
+        background: var(--dark);
+        text-align: center;
+        color: var(--gray-500);
+        font-size: 0.85rem;
+      }
+
+      .detail-footer a {
+        color: var(--primary-light);
+      }
+      .detail-footer a:hover {
+        color: var(--white);
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: static;
+          order: -1;
+        }
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+        .detail-meta {
+          gap: 8px;
+        }
+        .stats-row {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .event-banner {
+          padding: 40px 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="../index.html" class="logo">
+          <img
+            src="../assets/icons/LOGOGRIYAITNUSANTARANEW.png"
+            alt="GriyaIT Nusantara"
+            class="logo-img"
+          />
+          <span class="logo-text"
+            >GriyaIT<span class="highlight">Nusantara</span></span
+          >
+        </a>
+        <a href="../index.html#portfolio" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Kembali ke Portfolio
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="detail-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html">Beranda</a>
+          <i class="fas fa-chevron-right"></i>
+          <a href="../index.html#portfolio">Portfolio</a>
+          <i class="fas fa-chevron-right"></i>
+          <span>Panthermania</span>
+        </div>
+        <h1>Panthermania<br />Aplikasi Penjualan & Komunitas Kopdar Mobil</h1>
+        <div class="detail-meta">
+          <span class="badge badge-category"
+            ><i class="fas fa-car"></i> Mobile App</span
+          >
+          <span class="badge badge-platform"
+            ><i class="fas fa-globe"></i> Aplikasi Mobile</span
+          >
+          <span class="badge badge-tech"
+            ><i class="fab fa-laravel" style="color: #f05340"></i> Laravel</span
+          >
+          <span class="badge badge-tech"
+            ><i class="fas fa-users"></i>Di Seluruh Nusantara</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Banner -->
+    <div class="container">
+      <div class="event-banner">
+        <div class="run-icon"><i class="fas fa-running"></i></div>
+        <h2>Panthermania</h2>
+        <p>Applikasi yang menampung komunitas kopdar mobil &mdash; Nusantara</p>
+        <div class="stats-row">
+          <div class="stat-box">
+            <span class="stat-num">5.000</span>
+            <span class="stat-label"
+              >Lebih dari 5.000 Anggota di Seluruh Nusantara</span
+            >
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Kota dengan Kehadiran Aktif</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">4.000</span>
+            <span class="stat-label"
+              >Anggota &mdash; dengan Kehadiran Aktif</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+      <div class="detail-content">
+        <div class="content-grid">
+          <!-- Main -->
+          <div class="main-content">
+            <section>
+              <h2><i class="fas fa-info-circle"></i> Tentang Proyek</h2>
+              <p>
+                <strong>Panthermania</strong> adalah aplikasi mobile yang
+                menampung komunitas kopdar mobil di seluruh Nusantara. Aplikasi
+                ini dirancang untuk memudahkan anggota dalam berinteraksi,
+                berbagi pengalaman, dan mengelola acara kopdar.
+              </p>
+              <p>
+                Dibangun dengan <strong>Flutter</strong>, sistem ini menyediakan
+                pengalaman pengguna yang mulus mulai dari pendaftaran, pemilihan
+                acara, hingga pengelolaan komunitas — semuanya dalam satu
+                platform yang cepat dan aman.
+              </p>
+              <p>
+                Dibangun dengan <strong>Laravel</strong>, sistem ini menyediakan
+                alur pendaftaran yang mulus mulai dari pengisian formulir,
+                pemilihan kategori lomba, pembayaran online, hingga pengunduhan
+                e-ticket resmi — semuanya dalam satu platform yang cepat dan
+                aman.
+              </p>
+            </section>
+
+            <section>
+              <h2><i class="fas fa-star"></i> Fitur Utama</h2>
+              <div class="feature-grid">
+                <div class="feature-item">
+                  <div class="feature-icon"><i class="fas fa-edit"></i></div>
+                  <div>
+                    <h4>Program Kopdar</h4>
+                    <p>
+                      Acara kopdar dengan jadwal, lokasi, dan deskripsi lengkap
+                      untuk setiap event
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-layer-group"></i>
+                  </div>
+                  <div>
+                    <h4>Fitur Penjualan Merchandise</h4>
+                    <p>
+                      Tersedia toko online untuk pembelian merchandise resmi
+                      komunitas dengan integrasi pembayaran yang aman
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-credit-card"></i>
+                  </div>
+                  <div>
+                    <h4>Pembayaran Online</h4>
+                    <p>
+                      Integrasi payment gateway Midtrans — transfer, QRIS, kartu
+                      kredit
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon"><i class="fas fa-qrcode"></i></div>
+                  <div>
+                    <h4>E-Ticket & QR Code</h4>
+                    <p>
+                      Tiket digital berisi QR Code unik untuk verifikasi di
+                      lokasi
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                  </div>
+                  <div>
+                    <h4>Dashboard Panitia</h4>
+                    <p>
+                      Monitoring pendaftaran, kuota tersisa, dan rekap
+                      pembayaran
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon"><i class="fas fa-search"></i></div>
+                  <div>
+                    <h4>Cek Status Daftar</h4>
+                    <p>
+                      Peserta dapat cek status & cetak ulang tiket kapan saja
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2><i class="fas fa-lightbulb"></i> Tantangan & Solusi</h2>
+              <div class="challenge-list">
+                <div class="challenge-item">
+                  <h4>Lonjakan traffic saat pembukaan pendaftaran</h4>
+                  <p>
+                    Ribuan pengguna mengakses website serentak saat pendaftaran
+                    dibuka, berpotensi menyebabkan server down dan race
+                    condition pada kuota yang tersisa.
+                  </p>
+                  <p class="solution">
+                    <i class="fas fa-check-circle"></i> Implementasi queue
+                    system pada Laravel untuk mengantrekan proses pendaftaran,
+                    dikombinasikan dengan database locking optimistic untuk
+                    mencegah overselling kuota.
+                  </p>
+                </div>
+                <div class="challenge-item">
+                  <h4>Keamanan pembayaran dan validasi tiket</h4>
+                  <p>
+                    Risiko pembuatan tiket palsu dan manipulasi status
+                    pembayaran yang bisa merugikan panitia dan peserta yang
+                    mendaftar secara sah.
+                  </p>
+                  <p class="solution">
+                    <i class="fas fa-check-circle"></i> Integrasi webhook
+                    Midtrans dengan signature key verification, dan QR Code
+                    tiket digenerate dengan token unik terenkripsi yang
+                    divalidasi saat scan di lokasi event.
+                  </p>
+                </div>
+                <div class="challenge-item">
+                  <h4>Manajemen 1.500 data peserta yang efisien</h4>
+                  <p>
+                    Panitia membutuhkan akses cepat ke data seluruh peserta
+                    untuk keperluan cetak nomor BIB, pengelompokan kategori, dan
+                    rekap akhir.
+                  </p>
+                  <p class="solution">
+                    <i class="fas fa-check-circle"></i> Dashboard admin dengan
+                    fitur filter, search, dan export Excel/PDF menggunakan
+                    Laravel Excel, sehingga panitia bisa mengolah data tanpa
+                    perlu akses langsung ke database.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="sidebar">
+            <div class="sidebar-card">
+              <h4>Info Proyek</h4>
+              <div class="info-row">
+                <span class="label">Nama</span>
+                <span class="value">Panthermania</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Kategori</span>
+                <span class="value">Komunitas Kopdar Mobil Panthermania</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Platform</span>
+                <span class="value">Mobile App</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Lokasi</span>
+                <span class="value">Nusantara</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Peserta</span>
+                <span class="value">5.000 orang</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Framework</span>
+                <span class="value">Laravel</span>
+              </div>
+            </div>
+
+            <div class="sidebar-card">
+              <h4>Tech Stack</h4>
+              <div class="tech-tags">
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Midtrans</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Bootstrap</span>
+                <span class="tech-tag">Laravel Excel</span>
+                <span class="tech-tag">Queue</span>
+              </div>
+            </div>
+
+            <div class="sidebar-card">
+              <h4>Proyek Lainnya</h4>
+              <div class="link-list">
+                <a href="abimandira.html">
+                  <i class="fas fa-mobile-alt"></i> Absensi KebabaBiMandira
+                </a>
+                <a href="simpondok.html">
+                  <i class="fas fa-mosque"></i> Simpondok
+                </a>
+                <a href="masjidIsmuhuyahya.html">
+                  <i class="fas fa-globe"></i> Masjid Ismuhuyahya
+                </a>
+                <a href="iyis.html"> <i class="fas fa-school"></i> IYiS </a>
+              </div>
+            </div>
+
+            <div class="sidebar-card cta-card">
+              <h4>Tertarik proyek serupa?</h4>
+              <p>
+                Kami siap membangun website pendaftaran event untuk komunitas
+                atau organisasi Anda.
+              </p>
+              <a href="../index.html#kontak" class="btn-white-sm">
+                <i class="fas fa-comments"></i> Konsultasi Gratis
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="detail-footer">
+      <p>
+        &copy; 2025 <a href="../index.html">GriyaIT Nusantara</a>. All rights
+        reserved.
+      </p>
+    </footer>
+  </body>
+</html>
