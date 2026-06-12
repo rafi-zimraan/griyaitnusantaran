@@ -137,6 +137,29 @@ if (contactForm) {
   });
 }
 
+// ===== PRICING PACKAGE PRE-FILL =====
+const packageLabels = {
+  "landing-page": "Paket Landing Page",
+  "bisnis-pro": "Paket Bisnis Pro",
+  "web-application": "Paket Web Application",
+  "aplikasi-kasir": "Aplikasi Kasir (POS)",
+  "aplikasi-laundry": "Aplikasi Laundry",
+  "platform-donasi": "Platform Donasi",
+};
+
+document.querySelectorAll("[data-package]").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const pkg = this.getAttribute("data-package");
+    const select = document.getElementById("layanan-select");
+    const textarea = document.getElementById("pesan");
+
+    if (select) select.value = pkg;
+    if (textarea && !textarea.value.trim()) {
+      textarea.value = `Halo, saya tertarik dengan ${packageLabels[pkg] || pkg}. Mohon informasi lebih lanjut mengenai harga dan proses pengerjaannya.`;
+    }
+  });
+});
+
 // ===== ACTIVE NAV LINK ON SCROLL =====
 const sections = document.querySelectorAll("section[id]");
 window.addEventListener("scroll", () => {
